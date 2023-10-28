@@ -37,6 +37,10 @@ dependencies:
   freezed_annotation: ^2.4.1
   #　加速データの取得に必要 単位はm/s^2
   sensors_plus: ^3.1.0
+  google_fonts: ^6.1.0
+  shared_preferences: ^2.2.2
+  font_awesome_flutter: ^10.6.0
+  auto_size_text: ^3.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

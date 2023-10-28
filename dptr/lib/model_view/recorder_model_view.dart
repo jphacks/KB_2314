@@ -16,16 +16,19 @@ class RecorderNotifier extends StateNotifier<Recorder> {
 
   Future<void> start() async {
     print('start button is tapped');
-    this.timer =
-        Timer.periodic(const Duration(milliseconds: m_dt), (timer) async {
-          state = await state.update();
-        });
+    if(this.timer == null) {
+      this.timer =
+          Timer.periodic(const Duration(milliseconds: m_dt), (timer) async {
+            state = await state.update();
+          });
+    }
   }
 
   void stop() {
     if (this.timer != null) {
       this.timer!.cancel();
       state = state.reset();
+      this.timer = null;
     }
     print('stop button is tapped');
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'squat_widget.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
         body: SafeArea(
           child: Center(
-              child: Text('ホーム')
+              child: SquatWidget()
               ),
         ));
   }
