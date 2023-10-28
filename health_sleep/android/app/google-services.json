@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "172691698887",
+    "project_id": "health-app-kb2023",
+    "storage_bucket": "health-app-kb2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172691698887:android:bae5639f87449ff9b8bae2",
+        "android_client_info": {
+          "package_name": "com.flutterflow.healthai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXJZj74olOL06qrLDOJQ30CIm7S_JAbb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
