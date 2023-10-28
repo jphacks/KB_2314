@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -104,11 +105,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ForgotPasswordWidget(),
         ),
         FFRoute(
-          name: 'addAnotherProfile',
-          path: '/addAnotherProfile',
-          builder: (context, params) => AddAnotherProfileWidget(),
-        ),
-        FFRoute(
           name: 'onboarding',
           path: '/onboarding',
           builder: (context, params) => OnboardingWidget(),
@@ -165,6 +161,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'walking',
           path: '/walking',
           builder: (context, params) => WalkingWidget(),
+        ),
+        FFRoute(
+          name: 'alarming',
+          path: '/alarming',
+          builder: (context, params) => AlarmingWidget(),
+        ),
+        FFRoute(
+          name: 'before_sleeping',
+          path: '/beforeSleeping',
+          builder: (context, params) => BeforeSleepingWidget(),
+        ),
+        FFRoute(
+          name: 'morning_training',
+          path: '/morningTraining',
+          builder: (context, params) => MorningTrainingWidget(),
+        ),
+        FFRoute(
+          name: 'result',
+          path: '/result',
+          builder: (context, params) => ResultWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -4,8 +4,6 @@ export '/pages/complete_profile/complete_profile_widget.dart'
     show CompleteProfileWidget;
 export '/pages/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
-export '/pages/add_another_profile/add_another_profile_widget.dart'
-    show AddAnotherProfileWidget;
 export '/pages/onboarding/onboarding_widget.dart' show OnboardingWidget;
 export '/mainpage/my_appointments/my_appointments_widget.dart'
     show MyAppointmentsWidget;
@@ -17,3 +15,9 @@ export '/mainpage/home/home_widget.dart' show HomeWidget;
 export '/subpage/sleeping/sleeping_widget.dart' show SleepingWidget;
 export '/subpage/training/training_widget.dart' show TrainingWidget;
 export '/subpage/walking/walking_widget.dart' show WalkingWidget;
+export '/subpage/alarming/alarming_widget.dart' show AlarmingWidget;
+export '/subpage/before_sleeping/before_sleeping_widget.dart'
+    show BeforeSleepingWidget;
+export '/subpage/morning_training/morning_training_widget.dart'
+    show MorningTrainingWidget;
+export '/subpage/result/result_widget.dart' show ResultWidget;

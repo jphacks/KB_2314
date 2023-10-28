@@ -1,4 +1,3 @@
-import '/components/main_logo/main_logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -12,8 +11,6 @@ import 'package:provider/provider.dart';
 class FindSymptomsModel extends FlutterFlowModel<FindSymptomsWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Model for main_Logo component.
-  late MainLogoModel mainLogoModel;
   // State field(s) for searchField widget.
   FocusNode? searchFieldFocusNode;
   TextEditingController? searchFieldController;
@@ -21,12 +18,9 @@ class FindSymptomsModel extends FlutterFlowModel<FindSymptomsWidget> {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    mainLogoModel = createModel(context, () => MainLogoModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
-    mainLogoModel.dispose();
     searchFieldFocusNode?.dispose();
     searchFieldController?.dispose();
   }

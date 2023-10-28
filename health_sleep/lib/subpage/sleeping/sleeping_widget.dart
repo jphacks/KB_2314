@@ -65,7 +65,7 @@ class _SleepingWidgetState extends State<SleepingWidget> {
                 width: MediaQuery.sizeOf(context).width * 1.0,
                 height: MediaQuery.sizeOf(context).height * 1.0,
                 decoration: BoxDecoration(
-                  color: Color(0xFF0F9CFF),
+                  color: Color(0xFF0B3B5D),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -158,8 +158,8 @@ class _SleepingWidgetState extends State<SleepingWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            context.pushNamed('home');
                           },
                           text: '起床したため終了',
                           options: FFButtonOptions(
@@ -183,6 +183,44 @@ class _SleepingWidgetState extends State<SleepingWidget> {
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(32.0),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 20.0, 0.0, 0.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              context.pushNamed('morning_training');
+                            },
+                            text: '起床したため筋トレ',
+                            options: FFButtonOptions(
+                              width: 280.0,
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0xFF39D8D8),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                              elevation: 2.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(32.0),
+                            ),
                           ),
                         ),
                       ],

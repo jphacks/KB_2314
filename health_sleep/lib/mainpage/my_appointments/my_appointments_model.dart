@@ -1,4 +1,3 @@
-import '/components/main_logo/main_logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -10,20 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class MyAppointmentsModel extends FlutterFlowModel<MyAppointmentsWidget> {
-  ///  State fields for stateful widgets in this page.
-
-  // Model for main_Logo component.
-  late MainLogoModel mainLogoModel;
-
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    mainLogoModel = createModel(context, () => MainLogoModel());
-  }
+  void initState(BuildContext context) {}
 
-  void dispose() {
-    mainLogoModel.dispose();
-  }
+  void dispose() {}
 
   /// Action blocks are added here.
 

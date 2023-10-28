@@ -1,4 +1,3 @@
-import '/components/main_logo/main_logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -49,6 +48,24 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('FloatingActionButton pressed ...');
+        },
+        backgroundColor: FlutterFlowTheme.of(context).primary,
+        elevation: 8.0,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 24.0,
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
@@ -56,16 +73,7 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
           'TimerList',
           style: FlutterFlowTheme.of(context).displaySmall,
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
-            child: wrapWithModel(
-              model: _model.mainLogoModel,
-              updateCallback: () => setState(() {}),
-              child: MainLogoWidget(),
-            ),
-          ),
-        ],
+        actions: [],
         centerTitle: false,
         elevation: 0.0,
       ),

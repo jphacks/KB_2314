@@ -1,4 +1,3 @@
-import '/components/main_logo/main_logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -59,16 +58,7 @@ class _FindSymptomsWidgetState extends State<FindSymptomsWidget> {
           'Symptoms',
           style: FlutterFlowTheme.of(context).displaySmall,
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
-            child: wrapWithModel(
-              model: _model.mainLogoModel,
-              updateCallback: () => setState(() {}),
-              child: MainLogoWidget(),
-            ),
-          ),
-        ],
+        actions: [],
         centerTitle: false,
         elevation: 0.0,
       ),

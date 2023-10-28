@@ -6,7 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
 import 'schema/users_record.dart';
-import 'schema/appointments_record.dart';
+import 'schema/alarm_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,7 +15,7 @@ export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
 export 'schema/users_record.dart';
-export 'schema/appointments_record.dart';
+export 'schema/alarm_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -54,38 +54,41 @@ Future<List<UsersRecord>> queryUsersRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query AppointmentsRecords (as a Stream and as a Future).
-Future<int> queryAppointmentsRecordCount({
+/// Functions to query AlarmRecords (as a Stream and as a Future).
+Future<int> queryAlarmRecordCount({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      AppointmentsRecord.collection,
+      AlarmRecord.collection(parent),
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<AppointmentsRecord>> queryAppointmentsRecord({
+Stream<List<AlarmRecord>> queryAlarmRecord({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      AppointmentsRecord.collection,
-      AppointmentsRecord.fromSnapshot,
+      AlarmRecord.collection(parent),
+      AlarmRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<AppointmentsRecord>> queryAppointmentsRecordOnce({
+Future<List<AlarmRecord>> queryAlarmRecordOnce({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      AppointmentsRecord.collection,
-      AppointmentsRecord.fromSnapshot,
+      AlarmRecord.collection(parent),
+      AlarmRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

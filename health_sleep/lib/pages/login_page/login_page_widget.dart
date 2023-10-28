@@ -484,7 +484,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     if (user == null) {
                                                       return;
                                                     }
-                                                    context.safePop();
+
+                                                    context.pushNamedAuth(
+                                                        'completeProfile',
+                                                        context.mounted);
                                                   },
                                                   text: 'Continue as Guest',
                                                   options: FFButtonOptions(
@@ -913,7 +916,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                     if (user == null) {
                                                       return;
                                                     }
-                                                    context.safePop();
+
+                                                    context.pushNamedAuth(
+                                                        'completeProfile',
+                                                        context.mounted);
                                                   },
                                                   text: 'Continue as Guest',
                                                   options: FFButtonOptions(

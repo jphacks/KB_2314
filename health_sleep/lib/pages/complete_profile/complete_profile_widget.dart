@@ -314,20 +314,6 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
-          leading: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              context.pop();
-            },
-            child: Icon(
-              Icons.chevron_left_rounded,
-              color: FlutterFlowTheme.of(context).grayLight,
-              size: 32.0,
-            ),
-          ),
           title: Text(
             'Complete Profile',
             style: FlutterFlowTheme.of(context).headlineSmall,
@@ -387,7 +373,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                           decoration: InputDecoration(
                             labelText: 'Your Name',
                             labelStyle: FlutterFlowTheme.of(context).bodySmall,
-                            hintText: 'Please enter a valid number...',
+                            hintText: '公開可能な名前を教えてください',
                             hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -490,9 +476,9 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                           focusNode: _model.ailmentsFocusNode,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Ailments',
+                            labelText: 'Weight',
                             labelStyle: FlutterFlowTheme.of(context).bodySmall,
-                            hintText: 'What types of allergies do you have..',
+                            hintText: '体重はカロリー計算のために利用します.....',
                             hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -596,8 +582,8 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: FFButtonWidget(
-                            onPressed: () async {
-                              context.pushNamed('addAnotherProfile');
+                            onPressed: () {
+                              print('Button-Login pressed ...');
                             },
                             text: 'Add Another Profile',
                             icon: Icon(
@@ -658,10 +644,12 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                   displayName: _model.yourNameController.text,
                                   age: int.tryParse(
                                       _model.yourAgeController.text),
-                                  ailments: _model.ailmentsController.text,
                                   userSex: _model.radioButtonValue,
+                                  weight: int.tryParse(
+                                      _model.ailmentsController.text),
                                 ));
-                                context.safePop();
+
+                                context.pushNamed('home');
                               },
                               text: 'Complete Profile',
                               options: FFButtonOptions(

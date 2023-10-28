@@ -73,7 +73,7 @@ class _WalkingWidgetState extends State<WalkingWidget> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      'ウォーキング',
+                      'ウォーキング(仮)',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Outfit',
