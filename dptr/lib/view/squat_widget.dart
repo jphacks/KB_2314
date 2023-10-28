@@ -49,7 +49,7 @@ class SquatWidget extends ConsumerWidget {
                     ),
                     Center(
                     child: Text(
-                      '${recorder.time.toStringAsFixed(2)}',
+                      '${(recorder.time / (60 * 60)).floor()}:${((recorder.time % (60 * 60)) / 60).floor()}:${((recorder.time % (60 * 60)) % 60).floor()}',
                       style: TextStyle(
                           fontSize: 50,
                         color: Colors.white
