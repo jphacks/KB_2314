@@ -11,9 +11,9 @@ class SquatWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final abrollerRecorderController =
+    final recorderController =
     ref.read(recorderProvider.notifier);
-    final abrollerRecorder = ref.watch(recorderProvider);
+    final recorder = ref.watch(recorderProvider);
     return GestureDetector(
       /*
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -46,7 +46,16 @@ class SquatWidget extends ConsumerWidget {
                         color: Colors.white,
                         fontSize: 32.0,
                       ),
-                    ),/*
+                    ),
+                    Center(
+                    child: Text(
+                      '${recorder.time.toStringAsFixed(2)}',
+                      style: TextStyle(
+                          fontSize: 50,
+                        color: Colors.white
+                      ),
+                    ),),
+                    /*
                     FlutterFlowTimer(
                       initialTime: _model.timerMilliseconds,
                       getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
@@ -66,7 +75,7 @@ class SquatWidget extends ConsumerWidget {
                       ),
                     ),*/
                     Text(
-                      '4回目',
+                      '${recorder.times}',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Outfit',
@@ -178,9 +187,10 @@ class SquatWidget extends ConsumerWidget {
                         children: [
                           FFButtonWidget(
                             onPressed: () {
-                              print('Button pressed ...');
+                              recorderController.start();
+                              //print('Stop Button pressed');
                             },
-                            text: '休憩',
+                            text: 'スタート',
                             options: FFButtonOptions(
                               width: 130.0,
                               height: 40.0,
@@ -206,9 +216,10 @@ class SquatWidget extends ConsumerWidget {
                           ),
                           FFButtonWidget(
                             onPressed: () {
-                              print('Button pressed ...');
+                              recorderController.stop();
+                              //print('Stop Button pressed');
                             },
-                            text: '終了',
+                            text: 'ストップ',
                             options: FFButtonOptions(
                               width: 130.0,
                               height: 40.0,
