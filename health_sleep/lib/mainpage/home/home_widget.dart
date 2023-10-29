@@ -348,59 +348,50 @@ class _HomeWidgetState extends State<HomeWidget> {
                               ],
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                context.pushNamed('sleeping');
-                              },
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 16, 0, 0),
-                                    child: Icon(
-                                      Icons.bolt,
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      size: 44,
-                                    ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 16, 0, 0),
+                                  child: Icon(
+                                    Icons.bolt,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    size: 44,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 8, 0, 0),
-                                    child: AutoSizeText(
-                                      'トレーニング',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                          ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8, 4, 8, 0),
-                                      child: Text(
-                                        '日常的なトレーニング',
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.getFont(
-                                          'Lexend Deca',
-                                          color: Color(0xB3FFFFFF),
-                                          fontSize: 12,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 8, 0, 0),
+                                  child: AutoSizeText(
+                                    'トレーニング',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
                                         ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 4, 8, 0),
+                                    child: Text(
+                                      '日常的なトレーニング',
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.getFont(
+                                        'Lexend Deca',
+                                        color: Color(0xB3FFFFFF),
+                                        fontSize: 12,
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
