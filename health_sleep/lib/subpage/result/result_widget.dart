@@ -18,6 +18,7 @@ class ResultWidget extends ConsumerWidget {
     var _model = createModel(context, () => ResultModel());
     final recorder = ref.watch(recorderProvider);
     final scaffoldKey = GlobalKey<ScaffoldState>();
+    final recorderController = ref.read(recorderProvider.notifier);
 
       return GestureDetector(
         onTap: () => _model.unfocusNode.canRequestFocus
@@ -131,6 +132,7 @@ class ResultWidget extends ConsumerWidget {
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
+                            recorderController.reset();
                             context.pushNamed(
                               'home',
                               extra: <String, dynamic>{
