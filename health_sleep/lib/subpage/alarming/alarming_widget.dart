@@ -1,13 +1,14 @@
+import 'dart:async';
+
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'alarming_model.dart';
 export 'alarming_model.dart';
 
@@ -20,6 +21,8 @@ class AlarmingWidget extends StatefulWidget {
 
 class _AlarmingWidgetState extends State<AlarmingWidget> {
   late AlarmingModel _model;
+  String now_time = dateTimeFormat('jms', getCurrentTimestamp);
+  int index = 0;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -27,8 +30,14 @@ class _AlarmingWidgetState extends State<AlarmingWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AlarmingModel());
+    Timer.periodic(Duration(seconds: 1), _onTimer);
+  }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  void _onTimer(Timer timer) {
+    var new_time = dateTimeFormat('jms', getCurrentTimestamp);
+    setState(
+      () => now_time = new_time,
+    );
   }
 
   @override
@@ -61,8 +70,8 @@ class _AlarmingWidgetState extends State<AlarmingWidget> {
           child: Stack(
             children: [
               Container(
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                height: MediaQuery.sizeOf(context).height * 1.0,
+                width: MediaQuery.sizeOf(context).width,
+                height: MediaQuery.sizeOf(context).height * 1,
                 decoration: BoxDecoration(
                   color: Color(0xFF3B4C52),
                 ),
@@ -72,34 +81,25 @@ class _AlarmingWidgetState extends State<AlarmingWidget> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      'アラーム',
+                      '現在時刻',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Outfit',
                             color: Colors.white,
-                            fontSize: 32.0,
+                            fontSize: 32,
                           ),
                     ),
-                    FlutterFlowTimer(
-                      initialTime: _model.timerMilliseconds,
-                      getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
-                          value,
-                          milliSecond: false),
-                      controller: _model.timerController,
-                      onChanged: (value, displayTime, shouldUpdate) {
-                        _model.timerMilliseconds = value;
-                        _model.timerValue = displayTime;
-                        if (shouldUpdate) setState(() {});
-                      },
+                    Text(
+                      now_time,
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Outfit',
                             color: Colors.white,
-                            fontSize: 64.0,
+                            fontSize: 64,
                           ),
                     ),
                     Divider(
-                      thickness: 1.0,
+                      thickness: 1,
                       color: FlutterFlowTheme.of(context).accent4,
                     ),
                     Row(
@@ -112,27 +112,26 @@ class _AlarmingWidgetState extends State<AlarmingWidget> {
                           },
                           text: '筋トレに挑戦！',
                           options: FFButtonOptions(
-                            width: 360.0,
-                            height: 140.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
+                            width: 360,
+                            height: 140,
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            iconPadding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                             color: Color(0xFF39D8D8),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Colors.white,
-                                  fontSize: 84.0,
+                                  fontSize: 84,
                                   fontWeight: FontWeight.w600,
                                 ),
-                            elevation: 2.0,
+                            elevation: 2,
                             borderSide: BorderSide(
                               color: Colors.transparent,
-                              width: 1.0,
+                              width: 1,
                             ),
-                            borderRadius: BorderRadius.circular(32.0),
+                            borderRadius: BorderRadius.circular(32),
                           ),
                         ),
                       ],

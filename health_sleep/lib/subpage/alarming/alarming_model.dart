@@ -1,9 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'alarming_widget.dart' show AlarmingWidget;
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -14,11 +12,6 @@ class AlarmingModel extends FlutterFlowModel<AlarmingWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for Timer widget.
-  int timerMilliseconds = 0;
-  String timerValue = StopWatchTimer.getDisplayTime(0, milliSecond: false);
-  FlutterFlowTimerController timerController =
-      FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countUp));
 
   /// Initialization and disposal methods.
 
@@ -26,7 +19,6 @@ class AlarmingModel extends FlutterFlowModel<AlarmingWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    timerController.dispose();
   }
 
   /// Action blocks are added here.
