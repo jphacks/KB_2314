@@ -510,7 +510,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.pushNamed('sleeping');
+                                //context.pushNamed('sleeping');
+                                context.pushNamed('training');
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
