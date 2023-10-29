@@ -1,11 +1,15 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'my_appointments_model.dart';
 export 'my_appointments_model.dart';
 
@@ -16,10 +20,26 @@ class MyAppointmentsWidget extends StatefulWidget {
   _MyAppointmentsWidgetState createState() => _MyAppointmentsWidgetState();
 }
 
-class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
+class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget>
+    with TickerProviderStateMixin {
   late MyAppointmentsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = {
+    'containerOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -53,7 +73,7 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
           print('FloatingActionButton pressed ...');
         },
         backgroundColor: FlutterFlowTheme.of(context).primary,
-        elevation: 8.0,
+        elevation: 8,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +81,7 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
             Icon(
               Icons.add,
               color: Colors.white,
-              size: 24.0,
+              size: 24,
             ),
           ],
         ),
@@ -75,7 +95,7 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
         ),
         actions: [],
         centerTitle: false,
-        elevation: 0.0,
+        elevation: 0,
       ),
       body: SafeArea(
         top: true,
@@ -83,7 +103,7 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 12),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -100,25 +120,23 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
                 scrollDirection: Axis.vertical,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 12),
                     child: Container(
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: 110.0,
+                      width: MediaQuery.sizeOf(context).width,
+                      height: 110,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         boxShadow: [
                           BoxShadow(
-                            blurRadius: 4.0,
+                            blurRadius: 4,
                             color: Color(0x230E151B),
-                            offset: Offset(0.0, 2.0),
+                            offset: Offset(0, 2),
                           )
                         ],
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 12.0, 12.0, 12.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,7 +148,7 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
                                 Expanded(
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        4.0, 0.0, 0.0, 0.0),
+                                        4, 0, 0, 0),
                                     child: Text(
                                       '7:00',
                                       style: FlutterFlowTheme.of(context)
@@ -141,14 +159,14 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
                                 Icon(
                                   Icons.chevron_right_rounded,
                                   color: FlutterFlowTheme.of(context).grayLight,
-                                  size: 24.0,
+                                  size: 24,
                                 ),
                               ],
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    4.0, 4.0, 4.0, 0.0),
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(4, 4, 4, 0),
                                 child: Text(
                                   'スクワット',
                                   style: FlutterFlowTheme.of(context)
@@ -165,22 +183,22 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
-                                  height: 32.0,
+                                  height: 32,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
-                                    borderRadius: BorderRadius.circular(20.0),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 16.0, 0.0),
+                                        8, 0, 16, 0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 4.0, 0.0, 4.0),
+                                                  8, 4, 0, 4),
                                           child: Text(
                                             '編集',
                                             style: FlutterFlowTheme.of(context)
@@ -196,7 +214,8 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget> {
                           ],
                         ),
                       ),
-                    ),
+                    ).animateOnPageLoad(
+                        animationsMap['containerOnPageLoadAnimation']!),
                   ),
                 ],
               ),

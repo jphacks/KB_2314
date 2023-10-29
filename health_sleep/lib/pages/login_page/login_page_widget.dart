@@ -108,16 +108,16 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 if (Theme.of(context).brightness ==
                                     Brightness.dark)
                                   Image.asset(
-                                    'assets/images/health-ai_logoVert.png',
-                                    width: 200.0,
+                                    'assets/images/dark_title.png',
+                                    width: 400.0,
                                     height: 130.0,
                                     fit: BoxFit.fitHeight,
                                   ),
                                 if (!(Theme.of(context).brightness ==
                                     Brightness.dark))
                                   Image.asset(
-                                    'assets/images/logo_darkFull@2x.png',
-                                    width: 200.0,
+                                    'assets/images/light_title.png',
+                                    width: 400.0,
                                     height: 130.0,
                                     fit: BoxFit.fitHeight,
                                   ),

@@ -1,11 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -20,10 +23,109 @@ class HomeWidget extends StatefulWidget {
   _HomeWidgetState createState() => _HomeWidgetState();
 }
 
-class _HomeWidgetState extends State<HomeWidget> {
+class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   late HomeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = {
+    'containerOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation3': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation4': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation5': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation6': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation7': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation8': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -118,7 +220,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                           child: Text(
-                            'Hello',
+                            'Good Morning',
                             style: FlutterFlowTheme.of(context).displaySmall,
                           ),
                         ),
@@ -315,7 +417,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ],
                               ),
                             ),
-                          ),
+                          ).animateOnPageLoad(
+                              animationsMap['containerOnPageLoadAnimation1']!),
                         ),
                       ],
                     ),
@@ -326,75 +429,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed('training');
-                          },
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.4,
-                            height: 150,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).secondary,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 4,
-                                  color: Color(0x37000000),
-                                  offset: Offset(0, 1),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 16, 0, 0),
-                                  child: Icon(
-                                    Icons.bolt,
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    size: 44,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 8, 0, 0),
-                                  child: AutoSizeText(
-                                    'トレーニング',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8, 4, 8, 0),
-                                    child: Text(
-                                      '日常的なトレーニング',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.getFont(
-                                        'Lexend Deca',
-                                        color: Color(0xB3FFFFFF),
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
                         InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -464,7 +498,78 @@ class _HomeWidgetState extends State<HomeWidget> {
                               ],
                             ),
                           ),
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation2']!),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('training');
+                          },
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 0.4,
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).secondary,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 4,
+                                  color: Color(0x37000000),
+                                  offset: Offset(0, 1),
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 16, 0, 0),
+                                  child: Icon(
+                                    Icons.bolt,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    size: 44,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 8, 0, 0),
+                                  child: AutoSizeText(
+                                    'トレーニング',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                        ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 4, 8, 0),
+                                    child: Text(
+                                      '日常的なトレーニング',
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.getFont(
+                                        'Lexend Deca',
+                                        color: Color(0xB3FFFFFF),
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation3']!),
                       ],
                     ),
                   ),
@@ -543,24 +648,25 @@ class _HomeWidgetState extends State<HomeWidget> {
                               ],
                             ),
                           ),
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation4']!),
                         InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('sleeping');
+                            context.pushNamed('training');
                           },
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.4,
                             height: 150,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: FlutterFlowTheme.of(context).secondary,
                               boxShadow: [
                                 BoxShadow(
-                                  blurRadius: 3,
-                                  color: Color(0x39000000),
+                                  blurRadius: 4,
+                                  color: Color(0x37000000),
                                   offset: Offset(0, 1),
                                 )
                               ],
@@ -568,13 +674,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                             ),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 16, 0, 0),
                                   child: Icon(
-                                    Icons.filter_list_alt,
+                                    Icons.bolt,
                                     color:
                                         FlutterFlowTheme.of(context).alternate,
                                     size: 44,
@@ -584,7 +689,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 8, 0, 0),
                                   child: AutoSizeText(
-                                    '設定',
+                                    '朝のトレーニング',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
@@ -600,7 +705,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         8, 4, 8, 0),
                                     child: Text(
-                                      '就寝時刻、起床時刻などを設定します',
+                                      '起きたときのトレーニング',
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.getFont(
                                         'Lexend Deca',
@@ -613,10 +718,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                               ],
                             ),
                           ),
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation5']!),
                       ],
                     ),
                   ),
+                  /*
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
                     child: Row(
@@ -721,7 +828,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ),
                                   ),
                                 ),
-                              ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation6']!),
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
@@ -815,7 +923,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ),
                                     ),
                                   ),
-                                ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'containerOnPageLoadAnimation7']!),
                               ),
                               Padding(
                                 padding:
@@ -911,7 +1020,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ),
                                     ),
                                   ),
-                                ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'containerOnPageLoadAnimation8']!),
                               ),
                             ],
                           ),
@@ -919,6 +1029,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       ],
                     ),
                   ),
+                  */
                 ],
               ),
             ),
