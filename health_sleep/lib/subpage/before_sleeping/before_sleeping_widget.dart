@@ -126,7 +126,7 @@ class _BeforeSleepingWidgetState extends State<BeforeSleepingWidget> {
                             onPressed: () {
                               print('Button pressed ...');
                             },
-                            text: '12:00',
+                            text: '7:00',
                             options: FFButtonOptions(
                               height: 40.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
