@@ -11,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'before_sleeping_model.dart';
 export 'before_sleeping_model.dart';
+import 'dart:async';
 
 class BeforeSleepingWidget extends StatefulWidget {
   const BeforeSleepingWidget({Key? key}) : super(key: key);
@@ -21,6 +22,8 @@ class BeforeSleepingWidget extends StatefulWidget {
 
 class _BeforeSleepingWidgetState extends State<BeforeSleepingWidget> {
   late BeforeSleepingModel _model;
+  String now_time = dateTimeFormat('jms', getCurrentTimestamp);
+  int index = 0;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -30,6 +33,14 @@ class _BeforeSleepingWidgetState extends State<BeforeSleepingWidget> {
     _model = createModel(context, () => BeforeSleepingModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    Timer.periodic(Duration(seconds: 1), _onTimer);
+  }
+
+  void _onTimer(Timer timer) {
+    var new_time = dateTimeFormat('jms', getCurrentTimestamp);
+    setState(
+      () => now_time = new_time,
+    );
   }
 
   @override
@@ -73,7 +84,7 @@ class _BeforeSleepingWidgetState extends State<BeforeSleepingWidget> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      'アラーム',
+                      '現在時刻',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Outfit',
@@ -81,22 +92,13 @@ class _BeforeSleepingWidgetState extends State<BeforeSleepingWidget> {
                             fontSize: 32.0,
                           ),
                     ),
-                    FlutterFlowTimer(
-                      initialTime: _model.timerMilliseconds,
-                      getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
-                          value,
-                          milliSecond: false),
-                      controller: _model.timerController,
-                      onChanged: (value, displayTime, shouldUpdate) {
-                        _model.timerMilliseconds = value;
-                        _model.timerValue = displayTime;
-                        if (shouldUpdate) setState(() {});
-                      },
+                    Text(
+                      now_time,
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Outfit',
                             color: Colors.white,
-                            fontSize: 64.0,
+                            fontSize: 64,
                           ),
                     ),
                     Divider(

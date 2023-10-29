@@ -118,7 +118,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                           child: Text(
-                            'Good Morning',
+                            'Hello',
                             style: FlutterFlowTheme.of(context).displaySmall,
                           ),
                         ),
