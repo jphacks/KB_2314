@@ -15,6 +15,7 @@ import 'package:health_sleep/model_view/recorder_model_view.dart';
 
 class TrainingWidget extends ConsumerWidget {
   const TrainingWidget({Key? key}) : super(key: key);
+
 /*
   @override
   void dispose(BuildContext context, WidgetRef ref) {
@@ -30,6 +31,8 @@ class TrainingWidget extends ConsumerWidget {
     final recorder = ref.watch(recorderProvider);
     var _model = createModel(context, () => TrainingModel());
     final scaffoldKey = GlobalKey<ScaffoldState>();
+    final time = ref.watch(timeProvider);
+    final times = ref.watch(timesProvider);
     if (isiOS) {
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(
@@ -70,33 +73,35 @@ class TrainingWidget extends ConsumerWidget {
                             fontSize: 32.0,
                           ),
                     ),
-                    (recorder.uDir == -1) ?
+                    /*
+                    (recorder.uDir == -1)
+                        ? Center(
+                            child: Icon(Icons.arrow_circle_down_outlined,
+                                color: Colors.lightBlue, size: 100))
+                        : (recorder.uDir == 1)
+                            ? Center(
+                                child: Icon(Icons.arrow_circle_up_outlined,
+                                    color: Colors.lightBlue, size: 100))
+                            : Center(
+                                child: Icon(Icons.arrow_circle_right_outlined,
+                                    color: Colors.lightBlue, size: 100)),*/
                     Center(
-                        child: Icon(
-                            Icons.arrow_circle_down_outlined,
-                            color: Colors.lightBlue,
-                            size:100
-                        )
-                    ) : (recorder.uDir == 1) ?
-                    Center(
-                        child: Icon(
-                            Icons.arrow_circle_up_outlined,
-                            color: Colors.lightBlue,
-                            size:100
-                        )
-                    ) : Center(
-                        child: Icon(
-                            Icons.arrow_circle_right_outlined,
-                            color: Colors.lightBlue,
-                            size:100
-                        )
-                    ),
-
-                    Center(
-                      child: Text(
+                      child: time.when(
+                          data: (data) => Text(
+                                '${(data / (60 * 60)).floor()}:${((data % (60 * 60)) / 60).floor()}:${((data % (60 * 60)) % 60).floor()}',
+                                style: TextStyle(
+                                    fontSize: 50, color: Colors.white),
+                              ),
+                          error: (err, _) => Text(
+                                '${(0 / (60 * 60)).floor()}:${((0 % (60 * 60)) / 60).floor()}:${((0 % (60 * 60)) % 60).floor()}',
+                                style: TextStyle(
+                                    fontSize: 50, color: Colors.white),
+                              ),
+                          loading: () {}),
+                      /*Text(
                         '${(recorder.time / (60 * 60)).floor()}:${((recorder.time % (60 * 60)) / 60).floor()}:${((recorder.time % (60 * 60)) % 60).floor()}',
                         style: TextStyle(fontSize: 50, color: Colors.white),
-                      ),
+                      ),*/
                     ),
                     /*
                     FlutterFlowTimer(
@@ -117,6 +122,37 @@ class TrainingWidget extends ConsumerWidget {
                         fontSize: 64.0,
                       ),
                     ),*/
+                    times.when(
+                        data: (data) => Text(
+                              '${data}',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: Colors.white,
+                                    fontSize: 32.0,
+                                  ),
+                            ),
+                        error: (err, _) => Text('${0}',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: Colors.white,
+                                  fontSize: 32.0,
+                                )),
+                        loading: () => Text('${0}',
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context)
+                            .bodyMedium
+                            .override(
+                          fontFamily: 'Outfit',
+                          color: Colors.white,
+                          fontSize: 32.0,
+                        ))),
+                    /*
                     Text(
                       '${recorder.times}',
                       textAlign: TextAlign.center,
@@ -125,7 +161,8 @@ class TrainingWidget extends ConsumerWidget {
                             color: Colors.white,
                             fontSize: 32.0,
                           ),
-                    ),/*
+                    ),*/
+                    /*
                     Text(
                       '${(recorder.time/3600) * 1.05 * 5.0 * 60 * 1000} cal 消費',
                       textAlign: TextAlign.center,
@@ -258,8 +295,8 @@ class TrainingWidget extends ConsumerWidget {
                             ),
                           ),
                           FFButtonWidget(
-                            onPressed: () async {
-                              await recorderController.stop();
+                            onPressed: () {
+                              recorderController.stop();
                               context.pushNamed('result');
                             },
                             text: '終了',
@@ -290,8 +327,8 @@ class TrainingWidget extends ConsumerWidget {
                       ),
                     ),
                   ],
-                  ),
                 ),
+              ),
             ],
           ),
         ),
