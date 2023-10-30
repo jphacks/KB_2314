@@ -160,7 +160,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          context.pushNamed('walking');
+                                          context.pushNamed('alarming');
                                         },
                                         child: Container(
                                           width: 60,

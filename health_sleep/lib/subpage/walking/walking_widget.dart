@@ -1,21 +1,9 @@
 import 'package:health_sleep/subpage/walking/platform_options.dart';
 
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'walking_model.dart';
 export 'walking_model.dart';
-import 'package:flutter/material.dart';
 import 'package:soundpool/soundpool.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 
 class WalkingWidget extends StatefulWidget {
@@ -33,6 +21,10 @@ class _WalkingWidgetState extends State<WalkingWidget> {
     if (!kIsWeb) {
       _initPool(_soundpoolOptions);
     }
+    Future.delayed(Duration(seconds: 0), () {
+      print('5秒後に実行される');
+      _initPool(_soundpoolOptions);
+    });
   }
 
   @override
@@ -84,6 +76,11 @@ class _SoundWidgetState extends State<SoundWidget> {
     super.initState();
 
     _loadSounds();
+    _playSound();
+    Future.delayed(Duration(seconds: 0), () {
+      print('5秒後に実行される');
+      _pauseSound();
+    });
   }
 
   void _loadSounds() {
@@ -147,11 +144,6 @@ class _SoundWidgetState extends State<SoundWidget> {
                   ),
                 ],
               ),
-              SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: _playCheering,
-                child: Text("Play cheering"),
-              ),
               SizedBox(height: 4),
               Text('Set rate '),
               Row(children: [
@@ -164,7 +156,6 @@ class _SoundWidgetState extends State<SoundWidget> {
                       setState(() {
                         _rate = newRate;
                       });
-                      _updateCheeringRate();
                     },
                   ),
                 ),
@@ -206,21 +197,6 @@ class _SoundWidgetState extends State<SoundWidget> {
   Future<void> _stopSound() async {
     if (_alarmSoundStreamId != null) {
       await _soundpool.stop(_alarmSoundStreamId!);
-    }
-  }
-
-  Future<void> _playCheering() async {
-    var _sound = await _cheeringId;
-    _cheeringStreamId = await _soundpool.play(
-      _sound,
-      rate: _rate,
-    );
-  }
-
-  Future<void> _updateCheeringRate() async {
-    if (_cheeringStreamId > 0) {
-      await _soundpool.setRate(
-          streamId: _cheeringStreamId, playbackRate: _rate);
     }
   }
 
