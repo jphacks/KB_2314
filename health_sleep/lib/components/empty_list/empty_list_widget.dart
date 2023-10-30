@@ -56,7 +56,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'No Appointments!',
+                'No AlarmTime!',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).headlineSmall,
               ),
@@ -71,7 +71,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
             children: [
               Expanded(
                 child: Text(
-                  'You are all caught! No appointments scheduled, need an appointment? Schedule one now.',
+                  'You are all caught! No alarm_time scheduled, need an appointment? Schedule one now.',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodySmall,
                 ),

@@ -1,3 +1,4 @@
+/*
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
@@ -34,3 +35,4 @@ class WalkingModel extends FlutterFlowModel<WalkingWidget> {
 
   /// Additional helper methods are added here.
 }
+*/

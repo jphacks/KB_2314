@@ -110,11 +110,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => OnboardingWidget(),
         ),
         FFRoute(
-          name: 'myAppointments',
-          path: '/myAppointments',
+          name: 'myAlarmTime',
+          path: '/myAlarmTime',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'myAppointments')
-              : MyAppointmentsWidget(),
+              ? NavBarPage(initialPage: 'myAlarmTime')
+              : MyAlarmTimeWidget(),
         ),
         FFRoute(
           name: 'profilePage',

@@ -1,28 +1,23 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
-import 'my_appointments_model.dart';
-export 'my_appointments_model.dart';
+import 'my_alarm_time_model.dart';
+export 'my_alarm_time_model.dart';
 
-class MyAppointmentsWidget extends StatefulWidget {
-  const MyAppointmentsWidget({Key? key}) : super(key: key);
+class MyAlarmTimeWidget extends StatefulWidget {
+  const MyAlarmTimeWidget({Key? key}) : super(key: key);
 
   @override
-  _MyAppointmentsWidgetState createState() => _MyAppointmentsWidgetState();
+  _MyAlarmTimeWidgetState createState() => _MyAlarmTimeWidgetState();
 }
 
-class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget>
+class _MyAlarmTimeWidgetState extends State<MyAlarmTimeWidget>
     with TickerProviderStateMixin {
-  late MyAppointmentsModel _model;
+  late MyAlarmTimeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -44,7 +39,7 @@ class _MyAppointmentsWidgetState extends State<MyAppointmentsWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MyAppointmentsModel());
+    _model = createModel(context, () => MyAlarmTimeModel());
   }
 
   @override

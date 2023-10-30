@@ -8,8 +8,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class AppointmentsRecord extends FirestoreRecord {
-  AppointmentsRecord._(
+class AlarmTimeRecord extends FirestoreRecord {
+  AlarmTimeRecord._(
     DocumentReference reference,
     Map<String, dynamic> data,
   ) : super(reference, data) {
@@ -57,40 +57,40 @@ class AppointmentsRecord extends FirestoreRecord {
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('appointments');
+      FirebaseFirestore.instance.collection('alarm_time');
 
-  static Stream<AppointmentsRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => AppointmentsRecord.fromSnapshot(s));
+  static Stream<AlarmTimeRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => AlarmTimeRecord.fromSnapshot(s));
 
-  static Future<AppointmentsRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => AppointmentsRecord.fromSnapshot(s));
+  static Future<AlarmTimeRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => AlarmTimeRecord.fromSnapshot(s));
 
-  static AppointmentsRecord fromSnapshot(DocumentSnapshot snapshot) =>
-      AppointmentsRecord._(
+  static AlarmTimeRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      AlarmTimeRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static AppointmentsRecord getDocumentFromData(
+  static AlarmTimeRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      AppointmentsRecord._(reference, mapFromFirestore(data));
+      AlarmTimeRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'AppointmentsRecord(reference: ${reference.path}, data: $snapshotData)';
+      'AlarmTimeRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is AppointmentsRecord &&
+      other is AlarmTimeRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createAppointmentsRecordData({
+Map<String, dynamic> createAlarmTimeRecordData({
   String? appointmentName,
   String? appointmentDescription,
   DocumentReference? appointmentPerson,
@@ -112,12 +112,11 @@ Map<String, dynamic> createAppointmentsRecordData({
   return firestoreData;
 }
 
-class AppointmentsRecordDocumentEquality
-    implements Equality<AppointmentsRecord> {
-  const AppointmentsRecordDocumentEquality();
+class AlarmTimeRecordDocumentEquality implements Equality<AlarmTimeRecord> {
+  const AlarmTimeRecordDocumentEquality();
 
   @override
-  bool equals(AppointmentsRecord? e1, AppointmentsRecord? e2) {
+  bool equals(AlarmTimeRecord? e1, AlarmTimeRecord? e2) {
     return e1?.appointmentName == e2?.appointmentName &&
         e1?.appointmentDescription == e2?.appointmentDescription &&
         e1?.appointmentPerson == e2?.appointmentPerson &&
@@ -127,7 +126,7 @@ class AppointmentsRecordDocumentEquality
   }
 
   @override
-  int hash(AppointmentsRecord? e) => const ListEquality().hash([
+  int hash(AlarmTimeRecord? e) => const ListEquality().hash([
         e?.appointmentName,
         e?.appointmentDescription,
         e?.appointmentPerson,
@@ -137,5 +136,5 @@ class AppointmentsRecordDocumentEquality
       ]);
 
   @override
-  bool isValidKey(Object? o) => o is AppointmentsRecord;
+  bool isValidKey(Object? o) => o is AlarmTimeRecord;
 }

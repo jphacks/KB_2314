@@ -5,8 +5,8 @@ export '/pages/complete_profile/complete_profile_widget.dart'
 export '/pages/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
 export '/pages/onboarding/onboarding_widget.dart' show OnboardingWidget;
-export '/mainpage/my_appointments/my_appointments_widget.dart'
-    show MyAppointmentsWidget;
+export '/mainpage/my_alarm_time/my_alarm_time_widget.dart'
+    show MyAlarmTimeWidget;
 export '/mainpage/profile_page/profile_page_widget.dart' show ProfilePageWidget;
 export '/pages/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
 export '/mainpage/find_symptoms/find_symptoms_widget.dart'

@@ -130,7 +130,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'home': HomeWidget(),
-      'myAppointments': MyAppointmentsWidget(),
+      'myAlarmTime': MyAlarmTimeWidget(),
       'findSymptoms': FindSymptomsWidget(),
       'profilePage': ProfilePageWidget(),
     };

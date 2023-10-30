@@ -186,7 +186,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            'Schedule Appointments',
+                                            'Schedule AlarmTime',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall,
@@ -203,7 +203,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            'Easily schedule appointments for checkups,  routine procedures, etc.',
+                                            'Easily schedule alarm_time for checkups,  routine procedures, etc.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium,

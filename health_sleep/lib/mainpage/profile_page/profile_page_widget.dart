@@ -154,15 +154,24 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           2, 2, 2, 2),
-                                      child: Container(
-                                        width: 60,
-                                        height: 60,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/UI_avatar_2@3x.png',
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed('alarming');
+                                        },
+                                        child: Container(
+                                          width: 60,
+                                          height: 60,
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Image.asset(
+                                            'assets/images/UI_avatar_2@3x.png',
+                                          ),
                                         ),
                                       ),
                                     ),
