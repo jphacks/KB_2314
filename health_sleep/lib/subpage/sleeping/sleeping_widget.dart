@@ -30,6 +30,7 @@ class _SleepingWidgetState extends State<SleepingWidget> {
   int index = 0;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final now = DateTime.now();
 
   @override
   void initState() {
@@ -37,8 +38,14 @@ class _SleepingWidgetState extends State<SleepingWidget> {
     _model = createModel(context, () => SleepingModel());
     Timer.periodic(Duration(seconds: 1), _onTimer);
 
+    int last_minutes = (0 - now.minute + 60) % 60;
+    int last_hour = (7 - now.hour + 24) % 24;
+    if (0 > now.minute) {
+      last_hour -= 1;
+    }
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(hours: last_hour, minutes: last_minutes), () {
       print('5秒後に実行される');
       context.pushNamed('alarming');
     });
