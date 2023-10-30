@@ -92,10 +92,24 @@ class _SoundWidgetState extends State<SoundWidget> {
     Timer.periodic(Duration(seconds: 1), _onTimer);
     _loadSounds();
     _playSound();
+    /*
     Future.delayed(Duration(seconds: 0), () {
       print('5秒後に実行される');
       _pauseSound();
     });
+    */
+    Timer.periodic(
+      // 第一引数：繰り返す間隔の時間を設定
+      const Duration(seconds: 3),
+      // 第二引数：その間隔ごとに動作させたい処理を書く
+      (Timer timer) {
+        _playSound();
+      },
+    );
+  }
+
+  void flash(Timer timer) {
+    _pauseSound();
   }
 
   void _loadSounds() {
@@ -197,6 +211,7 @@ class _SoundWidgetState extends State<SoundWidget> {
                         FFButtonWidget(
                           onPressed: () async {
                             context.pushNamed('morning_training');
+                            _pauseSound();
                           },
                           text: '筋トレに挑戦！',
                           options: FFButtonOptions(
