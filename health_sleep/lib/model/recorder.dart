@@ -1,4 +1,5 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'dart:core';
+import 'dart:io';
 import 'dart:math';
 import 'dart:async';
 import 'package:sensors_plus/sensors_plus.dart';
@@ -8,21 +9,19 @@ import 'package:flutter_tts/flutter_tts.dart';
 part 'recorder.freezed.dart';*/
 
 /* Recorderモデル
- * 回数や移動距離，ストローク長を測定してトレーニングをサポートするモデル
+ * 回数や移動距離，ストローク長を測定してトレーニングを記録するモデル
  */
 FlutterTts tts = FlutterTts();
+
 const dt = 0.1;
 const m_dt = 100;
 
 class Recorder {
-  bool isStart = false;
-  int times = 0;
   double time = 0.0;
-  int uDir = 0; //-1はした，0は止まってる，1は上
   List velocity = [0.0, 0.0, 0.0];
-  bool isClose = false;
+  List accel = [0.0, 0.0, 0.0];
+  List velocity_record = [[0.0, 0.0, 0.0]];
   List trajectory = [[0.0, 0.0, 0.0]];
-  List count_record = [0];
 
   double _calc_distance(List pos1, List pos2) {
     var distance =
@@ -31,9 +30,16 @@ class Recorder {
     return (distance * 100).floor() / 100;
   }
 
-  Future<void> update() async {
+  Future<void> update(isInit) async {
+    /*
+    if(isInit == true) {
+      this.velocity = [0.0, 0.0, 0.0];
+      this.trajectory.last = [0.0, 0.0, 0.0];
+      this.velocity_record.last = [0.0, 0.0, 0.0];
+    }*/
+
     var accel_data = await userAccelerometerEvents.elementAt(0);
-    var accel = [
+    this.accel = [
       (accel_data.x * 10).round() / 10,
       (accel_data.y * 10).round() / 10,
       (accel_data.z * 10).round() / 10
@@ -48,14 +54,6 @@ class Recorder {
       (this.velocity[2] + accel[2] * dt * 10).round() / 10
     ];
 
-    if (this.velocity[1] < 0.1) {
-      this.uDir = -1;
-    } else if (this.velocity[1] > 0.1) {
-      this.uDir = 1;
-    } else {
-      this.uDir = 0;
-    }
-
     // 位置の計算
     var pos = [
       (this.trajectory.last[0] + this.velocity[0] * dt),
@@ -63,44 +61,14 @@ class Recorder {
       (this.trajectory.last[2] + this.velocity[2] * dt)
     ];
     this.trajectory.add(pos);
-    print(pos);
-
-    if (count_record.last + 5 < trajectory.length) {
-      if (_calc_distance(trajectory[count_record.last],
-          trajectory[trajectory.length - 1]) +
-          0.03 <
-          _calc_distance(trajectory[count_record.last],
-              trajectory[trajectory.length - 4]) &&
-          isClose == false) {
-        isClose = true;
-      }
-      print(isClose);
-      if (_calc_distance(trajectory[count_record.last],
-          trajectory[trajectory.length - 1]) >
-          _calc_distance(trajectory[count_record.last],
-              trajectory[trajectory.length - 4]) &&
-          isClose == true) {
-        this.times += 1;
-        isClose = false;
-        count_record.add(trajectory.length - 1);
-        this.velocity = [0.0, 0.0, 0.0];
-        this.trajectory.last = [0.0, 0.0, 0.0];
-        await tts.setLanguage("ja-JP");
-        await tts.setVolume(1.0);
-        await tts.setPitch(1.0);
-        tts.speak(this.times.toString());
-      }
     }
-    print(this.times);
-  }
+
 
   void reset() {
-    this.times = 0;
+    this.accel = [0.0,0.0,0.0];
     this.time = 0.0;
-    this.uDir = 0;
     this.velocity = [0.0, 0.0, 0.0];
-    this.isClose = false;
     this.trajectory = [[0.0, 0.0, 0.0]];
-    this.count_record = [0];
+    this.velocity_record = [[0.0, 0.0, 0.0]];
   }
 }
