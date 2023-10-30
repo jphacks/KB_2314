@@ -82,7 +82,7 @@ class SoundWidget extends StatefulWidget {
 class _SoundWidgetState extends State<SoundWidget> {
   int? _alarmSoundStreamId;
   int _cheeringStreamId = -1;
-
+  int hantei = -1;
   Soundpool get _soundpool => widget.pool;
 
   void initState() {
@@ -91,7 +91,6 @@ class _SoundWidgetState extends State<SoundWidget> {
     _model = createModel(context, () => AlarmingModel());
     Timer.periodic(Duration(seconds: 1), _onTimer);
     _loadSounds();
-    _playSound();
     /*
     Future.delayed(Duration(seconds: 0), () {
       print('5秒後に実行される');
@@ -102,8 +101,14 @@ class _SoundWidgetState extends State<SoundWidget> {
       // 第一引数：繰り返す間隔の時間を設定
       const Duration(seconds: 3),
       // 第二引数：その間隔ごとに動作させたい処理を書く
+
       (Timer timer) {
-        _playSound();
+        if (hantei == 0) {
+          print('Cancel timer');
+          timer.cancel();
+        } else {
+          _playSound();
+        }
       },
     );
   }
@@ -211,6 +216,7 @@ class _SoundWidgetState extends State<SoundWidget> {
                         FFButtonWidget(
                           onPressed: () async {
                             context.pushNamed('morning_training');
+                            hantei = 0;
                             _pauseSound();
                           },
                           text: '筋トレに挑戦！',
