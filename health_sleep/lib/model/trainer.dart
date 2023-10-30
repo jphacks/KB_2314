@@ -31,9 +31,8 @@ class Trainer {
   }
 
   //　トレーニングの指示と回数と運動のストロークを計測する．
-  Future<void> instruct(accel, trajectory, velocity) async {
+  Future<void> instruct(accel, trajectory,velocity_record) async {
     print(accel);
-    print(trajectory.last[1]);
     doInstruct = true;
     // 読み上げ機能の設定
     await tts.setLanguage("ja-JP");
@@ -46,7 +45,7 @@ class Trainer {
       isFirst = false;
       uDir = -1;
     }
-    if (uDir == -1 && accel[1] == 0.0 && trajectory.last[1] > 0.1) {
+    if (uDir == -1 && accel[1] == 0.0 && velocity_record.last[velocity_record.length-5] > 0.1) {
       uDir = 0;
       for (int i = 1; i <= 5; i++) {
         tts.speak('${i}');
@@ -55,7 +54,7 @@ class Trainer {
       tts.speak('こしをあげてください．');
       uDir = 1;
     }
-    if (uDir == 1 && accel[1] == 0.0 && velocity[1] < 0.1) {
+    if (uDir == 1 && accel[1] == 0.0 && velocity_record.last[velocity_record.length-5] < 0.1) {
       uDir = 0;
       this.times += 1;
       tts.speak('${this.times}回');
