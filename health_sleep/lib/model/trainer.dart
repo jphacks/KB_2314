@@ -27,8 +27,7 @@ class Trainer {
             pow(pos1[1] - pos2[1], 2) +
             pow(pos1[2] - pos2[2], 2),
         0.5);
-    return (distance * 100).floor() / 100;
-  }
+    return distance.toDouble();
 
   //　トレーニングの指示と回数と運動のストロークを計測する．
   Future<void> instruct(accel, trajectory,velocity_record) async {
@@ -45,7 +44,7 @@ class Trainer {
       isFirst = false;
       uDir = -1;
     }
-    if (uDir == -1 && accel[1] == 0.0 && velocity_record.last[velocity_record.length-5] > 0.1) {
+    if (uDir == -1 && accel[1] < 0.1 && accel[1] > -0.1 && velocity_record.last[velocity_record.length-5] > 0.1) {
       uDir = 0;
       for (int i = 1; i <= 5; i++) {
         tts.speak('${i}');
@@ -54,7 +53,7 @@ class Trainer {
       tts.speak('こしをあげてください．');
       uDir = 1;
     }
-    if (uDir == 1 && accel[1] == 0.0 && velocity_record.last[velocity_record.length-5] < 0.1) {
+    if (uDir == 1 && accel[1] < 0.1 && accel[1] > -0.1 && velocity_record.last[velocity_record.length-5] < 0.1) {
       uDir = 0;
       this.times += 1;
       tts.speak('${this.times}回');
