@@ -28,6 +28,7 @@ class Trainer {
             pow(pos1[2] - pos2[2], 2),
         0.5);
     return distance.toDouble();
+  }
 
   //　トレーニングの指示と回数と運動のストロークを計測する．
   Future<void> instruct(accel, trajectory,velocity_record) async {
