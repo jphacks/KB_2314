@@ -128,15 +128,6 @@ class _MorningTrainingWidgetState extends State<MorningTrainingWidget> {
                             fontSize: 32.0,
                           ),
                     ),
-                    Text(
-                      '120 kcal 消費',
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Outfit',
-                            color: Colors.white,
-                            fontSize: 32.0,
-                          ),
-                    ),
                     Divider(
                       thickness: 1.0,
                       color: FlutterFlowTheme.of(context).accent4,

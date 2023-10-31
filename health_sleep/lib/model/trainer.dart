@@ -104,6 +104,41 @@ class Trainer {
     doInstruct = false;*/
   }
 
+  //　朝のトレーニングの回数の読み上げと運動のストロークを計測する．
+  Future<void> morningInstruct(accel, trajectory,velocity_record) async {
+    print(accel);
+    // 読み上げ機能の設定
+    await tts.setLanguage("ja-JP");
+    await tts.setVolume(1.0);
+    await tts.setPitch(1.0);
+    // 回数の計算と読み上げ
+    if (count_record.last + 5 < trajectory.length) {
+      if (_calc_distance(trajectory[count_record.last],
+          trajectory[trajectory.length - 1]) +
+          0.03 <
+          _calc_distance(trajectory[count_record.last],
+              trajectory[trajectory.length - 4]) &&
+          isClose == false) {
+        isClose = true;
+      }
+      print(isClose);
+      if (_calc_distance(trajectory[count_record.last],
+          trajectory[trajectory.length - 1]) >
+          _calc_distance(trajectory[count_record.last],
+              trajectory[trajectory.length - 4]) &&
+          isClose == true) {
+        this.times -= 1;
+        isClose = false;
+        count_record.add(trajectory.length - 1);
+        velocity_record.last = [0.0, 0.0, 0.0];
+        trajectory.last = [0.0, 0.0, 0.0];
+        tts.speak(this.times.toString());
+      }
+    }
+  }
+
+
+
   void reset() {
     this.times = 0;
     this.uDir = 0;

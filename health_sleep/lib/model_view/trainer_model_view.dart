@@ -36,6 +36,21 @@ class TrainerNotifier extends StateNotifier<Trainer> {
     }
   }
 
+  Future<void> moringTrainingStart() async {
+    final recorderController = ref.read(recorderProvider.notifier);
+    final recorder = ref.watch(recorderProvider);
+    state.times += 5;
+    if (this.timer == null) {
+      this.timer =
+          Timer.periodic(const Duration(milliseconds: m_dt), (timer) async {
+            state.morningInstruct(recorder.accel, recorder.trajectory, recorder.velocity);
+            recorderController.update(true);
+            recorderController.update(false);
+            ref.refresh(timesProvider);
+          });
+    }
+  }
+
   Future<void> trainingStop() async {
     if (this.timer != null) {
       this.timer!.cancel();
