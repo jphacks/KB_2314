@@ -17,9 +17,11 @@ class Trainer {
   int times = 0;
   int uDir = 0; //-1はした，0は止まってる，1は上
   bool isFirst = true;
-  bool doInstruct = false;
+  //bool doInstruct = false;
   List stroke_record = [0.0];
   List count_record = [0];
+  bool isClose = false;
+
 
   double _calc_distance(List pos1, List pos2) {
     var distance = pow(
@@ -30,48 +32,76 @@ class Trainer {
     return distance.toDouble();
   }
 
-  //　トレーニングの指示と回数と運動のストロークを計測する．
+  //　回数の読み上げと運動のストロークを計測する．
   Future<void> instruct(accel, trajectory,velocity_record) async {
     print(accel);
-    doInstruct = true;
     // 読み上げ機能の設定
     await tts.setLanguage("ja-JP");
     await tts.setVolume(1.0);
     await tts.setPitch(1.0);
-    // 回数の計算とトレーニングガイド
+    // 回数の計算と読み上げ
+    if (count_record.last + 5 < trajectory.length) {
+      if (_calc_distance(trajectory[count_record.last],
+          trajectory[trajectory.length - 1]) +
+          0.03 <
+          _calc_distance(trajectory[count_record.last],
+              trajectory[trajectory.length - 4]) &&
+          isClose == false) {
+        isClose = true;
+      }
+      print(isClose);
+      if (_calc_distance(trajectory[count_record.last],
+          trajectory[trajectory.length - 1]) >
+          _calc_distance(trajectory[count_record.last],
+              trajectory[trajectory.length - 4]) &&
+          isClose == true) {
+        this.times += 1;
+        isClose = false;
+        count_record.add(trajectory.length - 1);
+        velocity_record.last = [0.0, 0.0, 0.0];
+        trajectory.last = [0.0, 0.0, 0.0];
+        tts.speak(this.times.toString());
+      }
+    }
+    // 回数の計算とトレーニングガイド/*
+    /*
     if (isFirst == true) {
       tts.speak('スクワットをはじめましょう．しじどおりにしてください.');
       tts.speak('スマホをすいちょくにもち，こしをしたにおろして，とめてください');
       isFirst = false;
       uDir = -1;
     }
-    if (uDir == -1 && accel[1] < 0.1 && accel[1] > -0.1 && velocity_record.last[velocity_record.length-5] > 0.1) {
-      uDir = 0;
-      for (int i = 1; i <= 5; i++) {
-        tts.speak('${i}');
+    if(velocity_record.length-5 > 0) {
+      if (uDir == -1 && accel[1] < 0.1 && accel[1] > -0.1 &&
+          velocity_record.last[velocity_record.length - 5] > 0.1) {
+        uDir = 0;
+        for (int i = 1; i <= 5; i++) {
+          tts.speak('${i}');
+          await new Future.delayed(new Duration(seconds: 3));
+        }
+        tts.speak('こしをあげてください．');
+        uDir = 1;
+      }
+      if (uDir == 1 && accel[1] < 0.1 && accel[1] > -0.1 &&
+          velocity_record.last[velocity_record.length - 5] < 0.1) {
+        uDir = 0;
+        this.times += 1;
+        tts.speak('${this.times}回');
+        count_record.add(trajectory.length - 1);
+        // ストロークの計算
+        var stroke = 0.0;
+        for (int i = count_record[count_record.length - 2];
+        i < count_record.last;
+        i++) {
+          stroke += _calc_distance(trajectory[i], trajectory[i + 1]);
+        }
+        this.stroke_record.add(stroke);
         await new Future.delayed(new Duration(seconds: 3));
+        tts.speak('こしをさげてください．');
+        uDir = -1;
       }
-      tts.speak('こしをあげてください．');
-      uDir = 1;
     }
-    if (uDir == 1 && accel[1] < 0.1 && accel[1] > -0.1 && velocity_record.last[velocity_record.length-5] < 0.1) {
-      uDir = 0;
-      this.times += 1;
-      tts.speak('${this.times}回');
-      count_record.add(trajectory.length - 1);
-      // ストロークの計算
-      var stroke = 0.0;
-      for (int i = count_record[count_record.length - 2];
-          i < count_record.last;
-          i++) {
-        stroke += _calc_distance(trajectory[i], trajectory[i + 1]);
-      }
-      this.stroke_record.add(stroke);
-      await new Future.delayed(new Duration(seconds: 3));
-      tts.speak('こしをさげてください．');
-      uDir = -1;
-    }
-    doInstruct = false;
+    doInstruct = false;*/
   }
 
   void reset() {

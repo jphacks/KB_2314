@@ -99,6 +99,7 @@ class ResultWidget extends ConsumerWidget {
                       padding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: Text(
+                        // 体重60kgとして，metsの計算式より算出
                         '${((recorder.time/3600) * 1.05 * 5.0 * 60).toStringAsFixed(2)}',
                         style: GoogleFonts.getFont(
                           'Overpass',

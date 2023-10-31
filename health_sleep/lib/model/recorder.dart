@@ -41,9 +41,9 @@ class Recorder {
     this.time += dt;
     // 速度の計算
     this.velocity = [
-      (this.velocity_record.last[this.velocity_record.length-1] + accel[0] * dt) / 10,
-      (this.velocity_record.last[this.velocity_record.length-1] + accel[1] * dt) / 10,
-      (this.velocity_record.last[this.velocity_record.length-1] + accel[2] * dt) / 10
+      (this.velocity_record.last[0] + accel[0] * dt),
+      (this.velocity_record.last[1] + accel[1] * dt),
+      (this.velocity_record.last[2] + accel[2] * dt)
     ];
     this.velocity_record.add(this.velocity);
 
